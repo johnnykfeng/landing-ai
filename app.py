@@ -109,6 +109,7 @@ if uploaded_file is not None:
             except Exception as e:
                 st.error(f"Error saving parsed documents: {str(e)}")
 
+st.divider()
 st.subheader("Load Parsed Documents")
 
 if any(PICKLE_DIR.iterdir()):
@@ -145,6 +146,7 @@ if st.session_state["parsed_documents"] is not None:
         except Exception as e:
             st.error(f"Error creating visualizations: {str(e)}")
 
+st.divider()
 st.subheader("Visualize Parsed Documents")
 
 if any(VISUALIZATION_DIR.iterdir()):
