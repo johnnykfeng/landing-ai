@@ -432,6 +432,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "agentic-doc" },
+    { name = "pypdf" },
     { name = "streamlit" },
     { name = "streamlit-pdf-viewer" },
 ]
@@ -439,6 +440,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "agentic-doc", specifier = ">=0.2.3" },
+    { name = "pypdf", specifier = ">=5.5.0" },
     { name = "streamlit", specifier = ">=1.45.1" },
     { name = "streamlit-pdf-viewer", specifier = ">=0.0.23" },
 ]

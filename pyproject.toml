@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "agentic-doc>=0.2.3",
+    "pypdf>=5.5.0",
     "streamlit>=1.45.1",
     "streamlit-pdf-viewer>=0.0.23",
 ]
