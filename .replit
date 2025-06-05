@@ -1,9 +1,14 @@
-modules = ["python-3.11"]
+modules = ["python-3.11", "web"]
 run = "streamlit run app.py"
 
 [nix]
 channel = "stable-24_05"
+packages = ["arrow-cpp", "cacert", "cargo", "freetype", "glibcLocales", "grpc", "gumbo", "harfbuzz", "jbig2dec", "lcms2", "libaom", "libde265", "libheif", "libiconv", "libimagequant", "libjpeg", "libjpeg_turbo", "libtiff", "libwebp", "libxcrypt", "mupdf", "nasm", "openjpeg", "pkg-config", "rustc", "swig", "tcl", "tk", "x265", "xcbuild", "zlib"]
 
 [deployment]
-run = ["sh", "-c", "streamlit run app.py"]
+run = ["sh", "-c", "streamlit run --server.address 0.0.0.0 --server.headless true --server.enableCORS=false --server.enableWebsocketCompression=false app.py"]
 deploymentTarget = "cloudrun"
+
+[[ports]]
+localPort = 8501
+externalPort = 80
