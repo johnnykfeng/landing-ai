@@ -1,0 +1,146 @@
+{
+  "markdown": "John Feng <!-- text, from page 0 (l=0.404,t=0.043,r=0.594,b=0.078), with ID 76b4e07d-1216-4a9f-8a80-395e65833b60 -->\n\nVictoria, BC, Canada \u2022 johnfengphd@gmail.com \u2022 +1 (647) 716-7981  \nLinkedIn: https://www.linkedin.com/in/john-feng-5735321b8/ <!-- text, from page 0 (l=0.215,t=0.077,r=0.782,b=0.115), with ID 47eb45fb-ba53-4ce0-ac17-1d049e6c946c -->\n\n**Skills:** CAD (Autodesk Inventor, Solidworks), 3D printing, Ultrafast Lasers, Ultra-high vacuum systems, High voltage systems, Writing technical reports, Public Speaking, Data Science, Machine Learning <!-- text, from page 0 (l=0.048,t=0.116,r=0.901,b=0.153), with ID 870692f7-a4a3-41f2-99ec-d5ea01e6c7ca -->\n\n**Education**\n\nBSc Physics specialist, Human Biology major - University of Toronto  \nMSc in Physics - University of Toronto  \nPhD in Physics - University of Toronto\n\n- [Van Kronecker Teaching Assistant Award](https://www.example.com) (2021)\n- [3-minute thesis University of Toronto finalist](https://www.example.com) (2017, 2018)\n\ncompleted Apr 2013  \ncompleted Aug 2014  \ncompleted Dec 2022 <!-- text, from page 0 (l=0.051,t=0.161,r=0.924,b=0.263), with ID ef635227-d836-47e6-bc28-6dd8ceaf790d -->\n\n- \u2022 Build and refine physics-based models of semiconductor materials, studying carrier dynamics, space charge effects, and material defects - work with a small agile team of engineers and scientists.\n- \u2022 Develop and execute test methods to characterize semiconductor devices via electro-optic properties, analyzing results to improve device performance.\n- \u2022 Root cause analysis of our persistent performance issues in our detector product\n- \u2022 Hands on experience in free-space optical alignment, optomechanics, and optical components.\n- \u2022 Software engineering: Code Python scripts for automated data acquisition and analysis, maintain proper version control and documentation with GitHub. Hand-over packaged software for other users.\n- \u2022 Write reports and present project plans, proposals, and results for technical and business audiences.\n- \u2022 Project Management: Communicate with vendors, understanding technical details of hardware before purchasing.\n- \u2022 Create detailed parts lists for project proposals. Assess risk of failure in projects.\n- \u2022 Proficient in CAD software such as SolidWorks, Onshape - design custom hardware for lab work.\n- \u2022 Refine apparatus to pass Gauge Repeatability and Reproducibility standards.\n- \u2022 Data Science: Very proficient in Python (Pandas, Matplotlib, Plotly, Streamlit, Numpy, Scipy), JMP Statistical Software, COMSOL. Familiar with MATLAB and Monte-Carlo simulations. <!-- text, from page 0 (l=0.050,t=0.277,r=0.946,b=0.524), with ID 2da4adfc-06f6-47c3-ba0d-f2a6f933a137 -->\n\nAI developer (contractor) - [Aggregate Intellect](https://www.aggregateintellect.com)                                                                 May 2023- Sept 2023\n\n- \u2022 College admissions chatbot helper: Scrape college websites for admissions details and program specific information using Python Scrapy\n- \u2022 Created automated chatbot with Python backend for answering international college admission query\n- \u2022 Applied AI Retrieval Augmented Generation method in backend\n- \u2022 Work in a small agile team of front-end developers and project manager\n- \u2022 Contribute to free open-source community-driven project slack agent (Sherpa AI) for querying slack conversation history and database. <!-- text, from page 0 (l=0.051,t=0.527,r=0.943,b=0.657), with ID 861d9cc1-92a4-4b63-a374-3f2dc8ba1c8d -->\n\nResearch Assistant at University of Toronto                                            Sept 2016 - Dec 2022\nMy primary Ph.D. research project was the design and construction of a novel >100kV electron accelerator with semiconductor photocathode source - Ultrafast Electron Diffractometer. This is a complex apparatus built for the purpose of probing matter at the atomic scale in ultrafast timescales. I led the planning, design, construction, and other technical work throughout this project. [Link to PhD Thesis] <!-- text, from page 0 (l=0.051,t=0.660,r=0.940,b=0.748), with ID 016d3de9-655c-4dfc-a394-8151f20a50d3 -->\n\n- \u2022 Plan, manage, build full lifecycle of complex engineering project ($300k total cost) from initial conception to hardware prototype\n- \u2022 Developed Python-based software for instrument control and data processing\n- \u2022 Hands-on experience with various lab equipment: electronics, lasers, nonlinear optics, ultra-high vacuum\n- \u2022 Modeled accelerated electron pulse dynamics with C++ based particle simulation software\n- \u2022 Experience in vacuum engineering, high voltage engineering (>100kV), high voltage conditioning, CAD design, programming for instrument controls, data analysis, ultrafast lasers, and basic electronics\n- \u2022 Coordinate the design, manufacture and procurement of specialized high voltage and ultra high vacuum components from various vendors and cross-functional teams world-wide\n- \u2022 Writing comprehensive reports, creating conference posters, and presentations about my project for a technical audience and lay audience <!-- text, from page 0 (l=0.080,t=0.757,r=0.928,b=0.922), with ID 8ac398e2-982a-49ac-8731-b828decf486f -->",
+  "chunks": [
+    {
+      "text": "John Feng",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.40431854128837585,
+            "t": 0.042796455323696136,
+            "r": 0.5939605832099915,
+            "b": 0.07849801331758499
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "76b4e07d-1216-4a9f-8a80-395e65833b60"
+    },
+    {
+      "text": "Victoria, BC, Canada \u2022 johnfengphd@gmail.com \u2022 +1 (647) 716-7981  \nLinkedIn: https://www.linkedin.com/in/john-feng-5735321b8/",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.2153419554233551,
+            "t": 0.07690517604351044,
+            "r": 0.7817039489746094,
+            "b": 0.11479306221008301
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "47eb45fb-ba53-4ce0-ac17-1d049e6c946c"
+    },
+    {
+      "text": "**Skills:** CAD (Autodesk Inventor, Solidworks), 3D printing, Ultrafast Lasers, Ultra-high vacuum systems, High voltage systems, Writing technical reports, Public Speaking, Data Science, Machine Learning",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.04770520329475403,
+            "t": 0.11559978127479553,
+            "r": 0.9006589651107788,
+            "b": 0.15263673663139343
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "870692f7-a4a3-41f2-99ec-d5ea01e6c7ca"
+    },
+    {
+      "text": "**Education**\n\nBSc Physics specialist, Human Biology major - University of Toronto  \nMSc in Physics - University of Toronto  \nPhD in Physics - University of Toronto\n\n- [Van Kronecker Teaching Assistant Award](https://www.example.com) (2021)\n- [3-minute thesis University of Toronto finalist](https://www.example.com) (2017, 2018)\n\ncompleted Apr 2013  \ncompleted Aug 2014  \ncompleted Dec 2022",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.05079150199890137,
+            "t": 0.16065055131912231,
+            "r": 0.9238680005073547,
+            "b": 0.26325535774230957
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "ef635227-d836-47e6-bc28-6dd8ceaf790d"
+    },
+    {
+      "text": "- \u2022 Build and refine physics-based models of semiconductor materials, studying carrier dynamics, space charge effects, and material defects - work with a small agile team of engineers and scientists.\n- \u2022 Develop and execute test methods to characterize semiconductor devices via electro-optic properties, analyzing results to improve device performance.\n- \u2022 Root cause analysis of our persistent performance issues in our detector product\n- \u2022 Hands on experience in free-space optical alignment, optomechanics, and optical components.\n- \u2022 Software engineering: Code Python scripts for automated data acquisition and analysis, maintain proper version control and documentation with GitHub. Hand-over packaged software for other users.\n- \u2022 Write reports and present project plans, proposals, and results for technical and business audiences.\n- \u2022 Project Management: Communicate with vendors, understanding technical details of hardware before purchasing.\n- \u2022 Create detailed parts lists for project proposals. Assess risk of failure in projects.\n- \u2022 Proficient in CAD software such as SolidWorks, Onshape - design custom hardware for lab work.\n- \u2022 Refine apparatus to pass Gauge Repeatability and Reproducibility standards.\n- \u2022 Data Science: Very proficient in Python (Pandas, Matplotlib, Plotly, Streamlit, Numpy, Scipy), JMP Statistical Software, COMSOL. Familiar with MATLAB and Monte-Carlo simulations.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.04971712827682495,
+            "t": 0.27692142128944397,
+            "r": 0.9455770254135132,
+            "b": 0.5238361358642578
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "2da4adfc-06f6-47c3-ba0d-f2a6f933a137"
+    },
+    {
+      "text": "AI developer (contractor) - [Aggregate Intellect](https://www.aggregateintellect.com)                                                                 May 2023- Sept 2023\n\n- \u2022 College admissions chatbot helper: Scrape college websites for admissions details and program specific information using Python Scrapy\n- \u2022 Created automated chatbot with Python backend for answering international college admission query\n- \u2022 Applied AI Retrieval Augmented Generation method in backend\n- \u2022 Work in a small agile team of front-end developers and project manager\n- \u2022 Contribute to free open-source community-driven project slack agent (Sherpa AI) for querying slack conversation history and database.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.051045000553131104,
+            "t": 0.5273938179016113,
+            "r": 0.9432618618011475,
+            "b": 0.6565538644790649
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "861d9cc1-92a4-4b63-a374-3f2dc8ba1c8d"
+    },
+    {
+      "text": "Research Assistant at University of Toronto                                            Sept 2016 - Dec 2022\nMy primary Ph.D. research project was the design and construction of a novel >100kV electron accelerator with semiconductor photocathode source - Ultrafast Electron Diffractometer. This is a complex apparatus built for the purpose of probing matter at the atomic scale in ultrafast timescales. I led the planning, design, construction, and other technical work throughout this project. [Link to PhD Thesis]",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.05114099383354187,
+            "t": 0.6601967811584473,
+            "r": 0.9403232336044312,
+            "b": 0.7475917339324951
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "016d3de9-655c-4dfc-a394-8151f20a50d3"
+    },
+    {
+      "text": "- \u2022 Plan, manage, build full lifecycle of complex engineering project ($300k total cost) from initial conception to hardware prototype\n- \u2022 Developed Python-based software for instrument control and data processing\n- \u2022 Hands-on experience with various lab equipment: electronics, lasers, nonlinear optics, ultra-high vacuum\n- \u2022 Modeled accelerated electron pulse dynamics with C++ based particle simulation software\n- \u2022 Experience in vacuum engineering, high voltage engineering (>100kV), high voltage conditioning, CAD design, programming for instrument controls, data analysis, ultrafast lasers, and basic electronics\n- \u2022 Coordinate the design, manufacture and procurement of specialized high voltage and ultra high vacuum components from various vendors and cross-functional teams world-wide\n- \u2022 Writing comprehensive reports, creating conference posters, and presentations about my project for a technical audience and lay audience",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07974934577941895,
+            "t": 0.7568103671073914,
+            "r": 0.9284714460372925,
+            "b": 0.9215696454048157
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "8ac398e2-982a-49ac-8731-b828decf486f"
+    }
+  ],
+  "start_page_idx": 0,
+  "end_page_idx": 0,
+  "doc_type": "pdf",
+  "result_path": null,
+  "errors": []
+}
