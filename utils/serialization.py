@@ -80,3 +80,69 @@ def save_json(parsed_results, doc_path, save_dir):
         json.dump(json_data, f, indent=2)
 
     return json_data, json_file_path
+
+
+def extract_json_from_parsed_doc(parsed_doc):
+    """
+    Extract JSON from parsed document.
+    Args:
+        parsed_doc: The parsed document
+    Returns:
+        JSON: The JSON data
+    """
+
+    # Convert parsed results to json-serializable format
+    json_data = {
+        "markdown": parsed_doc[0].markdown,
+        "chunks": [
+            {
+                "text": chunk.text,
+                "grounding": [
+                    {
+                        "page": g.page,
+                        "box": {
+                            "l": g.box.l,
+                            "t": g.box.t,
+                            "r": g.box.r,
+                            "b": g.box.b
+                        },
+                        "image_path": g.image_path
+                    } for g in chunk.grounding
+                ],
+                "chunk_type": chunk.chunk_type,
+                "chunk_id": chunk.chunk_id
+            } for chunk in parsed_doc[0].chunks
+        ],
+        "start_page_idx": parsed_doc[0].start_page_idx,
+        "end_page_idx": parsed_doc[0].end_page_idx,
+        "doc_type": parsed_doc[0].doc_type,
+        "result_path": parsed_doc[0].result_path,
+        "errors": parsed_doc[0].errors
+    }
+
+    return json_data
+
+
+def json_to_string(json_obj):
+    """
+    Convert a Python dictionary to a string representation.
+    """
+    if isinstance(json_obj, dict):
+        return json.dumps(json_obj)
+    return str(json_obj)
+
+
+def parsed_doc_to_records(parsed_doc_json, pdf_filename):
+
+    records = []
+    for chunk in parsed_doc_json["chunks"]:
+        record = {
+            "_id": chunk["chunk_id"],
+            "chunk_text": chunk["text"],
+            "chunk_type": chunk["chunk_type"],
+            "pdf_filename": pdf_filename,
+            "pdf_page": chunk["grounding"][0]["page"],
+            "box": json_to_string(chunk["grounding"][0]["box"])
+        }
+        records.append(record)
+    return records

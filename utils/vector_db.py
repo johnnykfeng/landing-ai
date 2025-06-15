@@ -4,6 +4,8 @@ import sys
 sys.path.append("C:/Users/johnk/Projects-code/LEARN/landing-ai")
 from PROMPTS.prompts import ANSWER_WITH_CONTEXT
 from openai import OpenAI
+import pandas as pd
+import json
 
 pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 
@@ -66,7 +68,7 @@ def retrieve_contexts(query: str, index_name: str, namespace: str, top_k=2):
     Retrieve contexts from a Pinecone index.
     """
     index = pc.Index(index_name)
-    xq = query_to_embedding(query)
+    # xq = query_to_embedding(query)
     search_results = index.search(
         namespace = namespace,
         query={
@@ -100,7 +102,7 @@ def retrieval_augmented_prompt(context_list: list, query: str, context_limit=100
         
         
     prompt = ANSWER_WITH_CONTEXT.prompt_text.format(context=total_context, question=query)
-    return prompt, chunk_ids
+    return prompt
 
 def chat_response(prompt: str, model_name="gpt-4o-mini", temperature=0.1):
     """
@@ -121,8 +123,72 @@ def rag_response(context_list: list, query: str, context_limit=10000):
     """
     Retrieve contexts from a Pinecone index and return a response using the OpenAI API.
     """
-    prompt, chunk_ids = retrieval_augmented_prompt(context_list, query, context_limit)
+    prompt = retrieval_augmented_prompt(context_list, query, context_limit)
     return chat_response(prompt)
+
+
+def get_vector_db_as_df(index_name: str, namespace: str) -> pd.DataFrame:
+    """
+    Fetch all vectors from a Pinecone index and namespace and return as a DataFrame.
+    
+    Args:
+        index_name (str): Name of the Pinecone index
+        namespace (str): Namespace within the index
+        
+    Returns:
+        pd.DataFrame: DataFrame containing vector IDs, embeddings, and metadata
+    """
+    pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
+    index = pc.Index(index_name)
+    
+    # Get all vector IDs in the namespace
+    ids_batch = [id for id in index.list(namespace=namespace)][0]
+    
+    # Fetch vectors and metadata
+    vectors_data = index.fetch(ids=ids_batch, namespace=namespace)
+    vectors_dict = vectors_data.vectors
+    
+    # Convert to DataFrame format
+    df_rows = []
+    for vector_id, vector_data in vectors_dict.items():
+        row = {
+            'id': vector_id,
+            'embedding': vector_data.values,
+            'dimensions': len(vector_data.values),
+            **vector_data.metadata
+        }
+        df_rows.append(row)
+        
+    df = pd.DataFrame(df_rows)
+    
+    # Convert pdf_page to int
+    if 'pdf_page' in df.columns:
+        df['pdf_page'] = df['pdf_page'].astype(int)
+        
+    return df
+
+def get_box_from_chunk_ids(chunk_ids: list[str], namespace: str, index_name: str):
+    """
+    Get the box from a list of chunk IDs.
+    """
+    index = pc.Index(index_name)
+    fetched_results = index.fetch(ids=chunk_ids, namespace=namespace)
+    box_json_list = []
+    for chunk_id in chunk_ids:
+        box_json = fetched_results.vectors[chunk_id].metadata['box']
+        box_json = json.loads(box_json)
+        box_json_list.append(box_json)
+    return box_json_list
+
+def chunk_ids_to_pdf_pages(chunk_ids: list[str], namespace: str):
+    pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
+    index = pc.Index(index_name)
+    fetched_results = index.fetch(ids=chunk_ids, namespace=namespace)
+    page_number_list = []
+    for chunk_id in chunk_ids:
+        page_number = fetched_results.vectors[chunk_id].metadata['pdf_page']
+        page_number_list.append(page_number)
+    return page_number_list
 
 if __name__ == "__main__":
     questions = ["What is the experimental setup?", 
