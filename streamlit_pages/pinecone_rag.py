@@ -39,6 +39,11 @@ def viz_chunk_in_pdf_cached(index_name: str,
 
 pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 
+if "selected_namespace" not in st.session_state:
+    st.session_state["selected_namespace"] = None
+if "namespace_index" not in st.session_state:
+    st.session_state["namespace_index"] = 0
+
 st.title("RAG with Pinecone")
 col1, col2 = st.columns(2)
 with col1:
@@ -51,27 +56,39 @@ with col1:
 with col2:
     # Get list of namespaces
     namespaces = index.describe_index_stats()["namespaces"]
-    namespace_names = list(namespaces.keys())
+    namespace_names = sorted(list(namespaces.keys())) # must be sorted to maintain order
 
-    selected_namespace = None
     if namespace_names:
-        selected_namespace = st.selectbox(
+        st.session_state["selected_namespace"] = st.selectbox(
             "Select a namespace",
             namespace_names,
             key="namespace_selector",
+            index=st.session_state["namespace_index"]
         )
-        # st.write(f"Selected namespace stats:", namespaces[selected_namespace])
+        st.session_state["namespace_index"] = namespace_names.index(st.session_state["selected_namespace"])
     else:
         st.info("No namespaces found in this index")
 
+with st.sidebar:
+    st.subheader("Session State Variables")
+    session_vars = {key: value for key, value in st.session_state.items()}
+    
+    if session_vars:
+        st.write("Current session state variables:")
+        for key, value in session_vars.items():
+            with st.expander(f"{key}"):
+                st.write(f"- **{key}**: {value}")
+    else:
+        st.info("No session state variables found")
+
 # Button to fetch all data from the index and namespace
 # get_df = st.checkbox("Extract Vector DB as DataFrame", value = True)
-if selected_namespace is not None:
-    df = get_vector_db_as_df_cached(index_name=index_name, namespace=selected_namespace)
+if st.session_state["selected_namespace"] is not None:
+    df = get_vector_db_as_df_cached(index_name=index_name, namespace=st.session_state["selected_namespace"])
     with col2:
         st.caption(f"Total records: {len(df)}")
         st.caption(f"Memory usage: {df.memory_usage(deep=True).sum()/1024/1024:.2f} MB")
-    with st.expander(f"Dataframe for Vector DB: {selected_namespace}"): 
+    with st.expander(f"Dataframe for Vector DB: {st.session_state['selected_namespace']}"): 
         st.dataframe(df)
         
 if namespace_names:
@@ -79,18 +96,18 @@ if namespace_names:
     with col1:
         chunk_id = st.selectbox("Select a chunk id", df['id'])
     with col2:
-        fetched_results = index.fetch(ids=[chunk_id], namespace=selected_namespace)
+        fetched_results = index.fetch(ids=[chunk_id], namespace=st.session_state["selected_namespace"])
         with st.expander("View Metadata"):  
             st.write(fetched_results.vectors[chunk_id].metadata)
     
 if st.button("Visualize chunk in PDF"):
     pdf_folder = Path(r"C:\Users\johnk\Projects-code\LEARN\landing-ai\app_storage\original_files")
-    pdf_filepath = pdf_folder / f"{selected_namespace}.pdf"
+    pdf_filepath = pdf_folder / f"{st.session_state['selected_namespace']}.pdf"
     
     viz = viz_chunk_in_pdf_cached(
         index_name=index_name, 
         chunk_id=chunk_id, 
-        namespace=selected_namespace, 
+        namespace=st.session_state["selected_namespace"], 
         pdf_filepath=pdf_filepath,
         color=(0, 255, 0), 
         thickness=2)
@@ -113,28 +130,28 @@ retrieve_chunks = st.toggle("Retrieve Chunks", value=False)
 if retrieve_chunks:
     if query_text:
         chunk_ids, metadata_list = retrieve_contexts(
-            query_text, index_name, selected_namespace, top_k)
+            query_text, index_name, st.session_state["selected_namespace"], top_k)
         
     retrieved_df = pd.DataFrame(metadata_list, index=chunk_ids)
     with st.expander("Retrieved Chunks"):
         st.dataframe(retrieved_df)
     context_list = [metadata_list[i]['chunk_text'] for i in range(len(chunk_ids))]
     pdf_folder = Path(r"C:\Users\johnk\Projects-code\LEARN\landing-ai\app_storage\original_files")
-    pdf_filepath = pdf_folder / f"{selected_namespace}.pdf"
+    pdf_filepath = pdf_folder / f"{st.session_state['selected_namespace']}.pdf"
     for chunk_id in chunk_ids:
         with st.expander(f"Visualize {chunk_id}"):
             st.image(viz_chunk_in_pdf_cached(
                                 index_name=index_name, 
                                 chunk_id=chunk_id, 
-                                namespace=selected_namespace, 
+                                namespace=st.session_state["selected_namespace"], 
                                 pdf_filepath=pdf_filepath,
                                 color=(0, 255, 0), 
                                 thickness=2))
             
-        
+    model_name = st.selectbox("Select a model", ["gpt-4o", "gpt-4o-mini"], index=0)
     if st.button("RAG Response", key="rag_response"):
         try:
-            rag_response_text = rag_response(context_list, query_text)
+            rag_response_text = rag_response(query_text, context_list, model_name=model_name)
             st.markdown(rag_response_text)
         except Exception as e:
             st.error(f"Error: {e}")

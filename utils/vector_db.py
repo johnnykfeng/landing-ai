@@ -119,12 +119,12 @@ def chat_response(prompt: str, model_name="gpt-4o-mini", temperature=0.1):
     )
     return response.output_text
 
-def rag_response(context_list: list, query: str, context_limit=10000):
+def rag_response(query: str, context_list: list, model_name="gpt-4o-mini", context_limit=10000):
     """
     Retrieve contexts from a Pinecone index and return a response using the OpenAI API.
     """
     prompt = retrieval_augmented_prompt(context_list, query, context_limit)
-    return chat_response(prompt)
+    return chat_response(prompt=prompt, model_name=model_name)
 
 
 def get_vector_db_as_df(index_name: str, namespace: str) -> pd.DataFrame:

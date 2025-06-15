@@ -40,7 +40,7 @@ if 'selected_index' not in st.session_state:
 st.header("📤 Step 1: Upload PDF")
 uploaded_file = st.file_uploader(
     "Choose a PDF file",
-    type=["pdf", "png", "jpg", "jpeg"],
+    type=["pdf"],
     help="Upload a PDF file to parse and upload to Pinecone"
 )
 
@@ -100,23 +100,6 @@ if uploaded_file is not None:
             if len(df) > 10:
                 st.info(
                     f"Showing first 10 records out of {len(df)} total records")
-
-            # # Show individual record details
-            # selected_record_id = st.selectbox(
-            #     "Select a record to view details:",
-            #     options=[record['_id']
-            #              for record in st.session_state.parsed_records],
-            #     key="record_selector"
-            # )
-
-            # if selected_record_id:
-            #     selected_record = next(
-            #         (record for record in st.session_state.parsed_records if record['_id'] == selected_record_id),
-            #         None
-            #     )
-            #     if selected_record:
-            #         with st.expander("📄 Record Details", expanded=True):
-            #             st.json(selected_record)
 
 # Step 4: Pinecone Index Management
 st.header("🗄️ Step 4: Pinecone Index Management")
