@@ -17,3 +17,5 @@ pdf_samples/ignore/
 .streamlit/secrets.toml
 
 IGNORE/
+
+Pincone_Tutorial/
